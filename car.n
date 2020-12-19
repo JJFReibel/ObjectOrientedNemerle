@@ -1,0 +1,64 @@
+/*
+MIT License
+Copyright (c) 2020 Jean-Jacques François Reibel
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+using System;
+[Record] class Car {
+  public mutable wheels : int;
+  public mutable doors : int;
+  public mutable cylinders : int;
+  public addWheels (wheelsIn : int) : void {
+    this.wheels += wheelsIn;
+  }
+  public addDoors (doorsIn : int) : void {
+    this.doors += doorsIn;
+  }
+  public addCylinders (cylindersIn : int) : void {
+    this.cylinders += cylindersIn;
+  }
+  public deleteWheels (wheelsIn : int) : void {
+    this.wheels -= wheelsIn;
+  }
+  public deleteDoors (doorsIn : int) : void {
+    this.doors -= doorsIn;
+  }
+  public deleteCylinders (cylindersIn : int) : void {
+    this.cylinders -= cylindersIn;
+  }
+  public printInfo() : void {
+      System.Console.WriteLine ("Wheel check: " + this.wheels);
+      System.Console.WriteLine ("Door check: " + this.doors);
+      System.Console.WriteLine ("Cylinder check: " + this.cylinders + "\n");
+  }
+}
+
+class MainClass
+{
+    static Main () : void
+    {
+        System.Console.WriteLine ("Creating car.");
+        mutable subaru = Car (4,4,4);
+        subaru.printInfo();
+        System.Console.WriteLine ("Adding wheel directly to car object.");
+        subaru.wheels += 1;
+        subaru.printInfo();
+        System.Console.WriteLine ("Removing wheel using object method.");
+        subaru.deleteWheels(1);
+        subaru.printInfo();
+    }
+}
